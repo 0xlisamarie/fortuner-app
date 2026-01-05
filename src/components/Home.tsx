@@ -593,7 +593,7 @@ const Home: React.FC = () => {
         <header className="header">
           <div className="header-content">
             <div className="logo-section">
-              <h1 className="logo">Fortune</h1>
+              <h1 className="logo">Fortuner</h1>
               <div className={`live-indicator ${isLive ? "active" : ""}`}>
                 <span className="pulse-dot"></span>
                 <span className="live-text">Live</span>
