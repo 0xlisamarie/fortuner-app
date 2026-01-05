@@ -15,6 +15,7 @@ import EventCard from "./EventCard";
 import Modal from "./Modal";
 import "./Home.css";
 import "./Modal.css";
+import { getApiUrl } from "../config";
 import {
   BarChart,
   Bar,
@@ -239,7 +240,9 @@ const Home: React.FC = () => {
         setError(null);
 
         // Create EventSource connection for SSE
-        eventSource = new EventSource("/api/event/stream?network=testnet");
+        eventSource = new EventSource(
+          getApiUrl("/event/stream?network=testnet")
+        );
 
         eventSource.onopen = () => {
           setIsLive(true);
@@ -338,9 +341,7 @@ const Home: React.FC = () => {
     setPaymentError(null);
 
     try {
-      const response = await fetch(
-        `https://fortune-pipeline.up.railway.app/event/${uuid}?network=testnet`
-      );
+      const response = await fetch(getApiUrl(`/event/${uuid}?network=testnet`));
       const data = await response.json();
 
       if (response.status === 402) {
@@ -477,7 +478,7 @@ const Home: React.FC = () => {
 
       // Call the API with payment details
       const verifyResponse = await fetch(
-        `https://fortune-pipeline.up.railway.app/event/${currentEventUuid}?network=testnet`,
+        getApiUrl(`/event/${currentEventUuid}?network=testnet`),
         {
           method: "POST",
           headers: {
