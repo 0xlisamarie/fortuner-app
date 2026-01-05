@@ -1,0 +1,309 @@
+/* Event Card - Premium Compact Design */
+.event-card {
+  background: linear-gradient(
+    135deg,
+    rgba(25, 28, 35, 0.98) 0%,
+    rgba(18, 21, 28, 0.98) 100%
+  );
+  border: 1px solid rgba(255, 140, 0, 0.12);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%; /* Fill the wrapper height */
+  min-height: 240px; /* Slightly more for better balance */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.event-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 140, 0, 0.5),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.event-card:hover {
+  border-color: rgba(255, 140, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 140, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.event-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1em;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: left;
+  letter-spacing: -0.5px;
+}
+
+.card-category {
+  font-size: 0.6em;
+  color: rgba(255, 140, 0, 0.9);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  text-align: left;
+}
+
+.status-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.active-since-label {
+  font-size: 0.6em;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+  font-family: "Inter", sans-serif; /* Keep metadata sans-serif */
+  letter-spacing: 0.5px;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-active {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+.status-pending {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
+.status-inactive {
+  background: rgba(107, 114, 128, 0.2);
+  color: #9ca3af;
+  border: 1px solid rgba(107, 114, 128, 0.4);
+}
+
+/* Card Metrics - Flex Grow to push footer down */
+.card-metrics {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center metrics vertically */
+  gap: 16px;
+}
+
+.metric-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background: rgba(255, 140, 0, 0.03);
+  border: 1px solid rgba(255, 140, 0, 0.08);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.metric-item:hover {
+  background: rgba(255, 140, 0, 0.06);
+  border-color: rgba(255, 140, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+.metric-label {
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 1em;
+  font-weight: 700;
+  color: #10b981; /* Green color from reference */
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.metric-detail {
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 500;
+}
+
+/* Card Footer */
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05); */
+}
+
+.footer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.footer-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-label {
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+
+.footer-value {
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.pay-unlock-btn {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10b981;
+  font-size: 0.8em;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pay-unlock-btn:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.pay-unlock-btn.view-details {
+  background: rgba(255, 140, 0, 0.15);
+  border-color: rgba(255, 140, 0, 0.4);
+  color: #ff8c00;
+}
+
+.pay-unlock-btn.view-details:hover {
+  background: rgba(255, 140, 0, 0.25);
+  border-color: rgba(255, 140, 0, 0.6);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.15);
+}
+
+/* Removed redundant metric-value block */
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .event-card {
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .card-title {
+    font-size: 1.05em;
+  }
+
+  .metric-value {
+    font-size: 1em;
+  }
+
+  .pay-unlock-btn {
+    font-size: 0.7em;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-card {
+    padding: 16px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status-badge {
+    align-self: flex-start;
+  }
+}
